@@ -1,0 +1,36 @@
+@import "../variable.scss";
+.container {
+    width: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-Gbx {
+    margin-top: 30px;
+}
+
+.header {
+    margin-top: 46px;
+    display: flex;
+    justify-content: space-between;
+    &__title {
+        color: $color-blue;
+    }
+    &__lable {
+        display: block;
+        font-size: 12px;
+        font-weight: normal;
+        color: $color-dark-blue;
+    }
+    &__input {
+        display: block;
+        width: 399px;
+        height: 41px;
+        border: 2px solid $color-light-blue;
+        border-radius: 10px;
+        color: $color-grey;
+        font-size: 18px;
+        font-family: "Roboto", sans-serif;
+        padding-left: 20px;
+    }
+}

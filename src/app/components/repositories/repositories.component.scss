@@ -1,0 +1,75 @@
+@import "../../../variable.scss";
+.repositories {
+    box-shadow: 1px 0px 16px rgba(0, 0, 0, 0.17);
+    height: 602px;
+    margin-top: 40px;
+    padding: 34px 0px 20px 38px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    align-content: flex-start;
+    &::-webkit-scrollbar {
+        width: 30px;
+        border-radius: 50px;
+    }
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 30px 30px $color-scrollbar-thumb;
+        border: solid transparent;
+        border-width: 40px 13px;
+        border-radius: 50px;
+    }
+    &::-webkit-scrollbar-thumb {
+        box-shadow: inset 0 0 30px 30px $color-scrollbar-track;
+        border: solid red;
+        border-width: 40px 13px;
+        border-radius: 50px;
+    }
+    .repository {
+        background: $color-light-blue;
+        border-radius: 10px;
+        flex-basis: 555px;
+        flex-grow: 0;
+        height: 130px;
+        display: flex;
+        margin-bottom: 20px;
+        &:nth-child(odd) {
+            margin-right: 20px;
+        }
+        &__avatar {
+            flex-basis: 60px;
+            height: 60px;
+            margin: 26px 20px 0 31px;
+            background-color: red;
+            border-radius: 30px;
+        }
+        &__textContainer {
+            flex-basis: 340px;
+        }
+        &__header {
+            margin: 26px 0 4px;
+            color: $color-dark-blue;
+        }
+        &__description {
+            display: block;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 20px;
+        }
+        &__branch {
+            font-size: 10px;
+            line-height: 12px;
+            color: $color-light-purple;
+            margin-top: 8px;
+        }
+        &__arrowLink {
+            width: 50px;
+            height: 50px;
+            margin: 40px 0 40px 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+// .repository__description {}
