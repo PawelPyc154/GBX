@@ -1,24 +1,30 @@
 <section class="repositories">
-    <article *ngFor="let test of testy" class="repository">
-        <figure class="repository__avatar">
-            <img src="" alt="" />
-        </figure>
-        <div class="repository__textContainer">
-            <h2 class="repository__header">
-                Nazwa-repozytorium
-            </h2>
-            <p class="repository__description">
-                Description Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </p>
-            <p class="repository__branch">master</p>
-        </div>
-        <a href="#" class="repository__arrowLink">
-            <svg width="36" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M35.414 16.414a2 2 0 000-2.828L22.686.858a2 2 0 10-2.828 2.828L31.172 15 19.858 26.314a2 2 0 102.828 2.828l12.728-12.728zM0 17h34v-4H0v4z"
-          fill="#A5B8FF"
-        />
-      </svg>
-        </a>
-    </article>
+    <div *ngIf="!_http.error && _http.repositories.length === 0">
+        Ten użytkownik nie posiada repozytoriów
+    </div>
+    <div class="repositories__container" *ngIf="_http.repositories && !_http.loading">
+        <article *ngFor="let repository of _http.repositories" class="repository">
+            <figure class="repository__avatar">
+                <img src="{{ repository.owner.avatar_url }}" alt="" />
+            </figure>
+            <div class="repository__textContainer">
+                <h2 class="repository__header">
+                    {{ repository.name }}
+                </h2>
+                <p class="repository__description">
+                    {{ repository.description }}
+                </p>
+                <p class="repository__branch">{{ repository.default_branch }}</p>
+            </div>
+            <a rel="noopener noreferrer" href="{{ repository.html_url }}" class="repository__arrowLink" target="_blank">
+                <svg width="36" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M35.414 16.414a2 2 0 000-2.828L22.686.858a2 2 0 10-2.828 2.828L31.172 15 19.858 26.314a2 2 0 102.828 2.828l12.728-12.728zM0 17h34v-4H0v4z"
+            fill="#A5B8FF"
+          />
+        </svg>
+            </a>
+        </article>
+    </div>
+    <app-loader *ngIf="_http.loading"></app-loader>
 </section>

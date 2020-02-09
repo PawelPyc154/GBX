@@ -32,5 +32,8 @@
         font-size: 18px;
         font-family: "Roboto", sans-serif;
         padding-left: 20px;
+        &:disabled {
+            background-color: $color-light-blue;
+        }
     }
 }

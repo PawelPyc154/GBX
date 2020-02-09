@@ -9,7 +9,7 @@
 
 body {
     border: 9px solid $color-blue;
-    height: 100vh;
+    min-height: 100vh;
     font-family: "Roboto", sans-serif;
 }
 
@@ -26,4 +26,17 @@ h1 {
 h2 {
     font-size: 24px;
     font-weight: 500;
+}
+
+img {
+    width: 100%;
+}
+
+.input {
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
 }
