@@ -20,7 +20,6 @@ export class HttpService {
     
     this.userName = userName;
     this.userNameObs.next(this.userName);
-
     this.error = "";
     this.errorObs.next(this.error);
     if (this.userName) {
@@ -36,7 +35,6 @@ export class HttpService {
                 new Date(b.updated_at).getTime()
             );
             this.repositoriesObs.next(this.repositories);
-
             this.userName = "";
             this.userNameObs.next(this.userName);
             this.loading = false;
