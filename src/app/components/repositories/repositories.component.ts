@@ -6,16 +6,7 @@ import { HttpService } from "../../http.service";
   styleUrls: ["./repositories.component.scss"]
 })
 export class RepositoriesComponent implements OnInit {
-  // repositories: any;
+  constructor(private _http: HttpService) {}
 
-  constructor(private _http: HttpService) {
-    // console.log(this.repositories);
-  }
-
-  ngOnInit() {
-    // this._http.getRepositories().subscribe(data => {
-    //   this.repositories = data;
-    //   console.log(this.repositories);
-    // });
-  }
+  ngOnInit() {}
 }

@@ -40,3 +40,27 @@ img {
     -o-appearance: none;
     appearance: none;
 }
+
+.simplebar-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: 525px;
+    width: 1149px;
+    position: relative;
+}
+
+.simplebar-scrollbar {
+    background-color: $color-scrollbar-track;
+    border-radius: 50px;
+    width: 4px;
+    &::before {
+        display: none;
+    }
+}
+
+.simplebar-track {
+    background-color: $color-scrollbar-thumb;
+    border-radius: 50px;
+    width: 4px !important;
+}

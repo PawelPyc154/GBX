@@ -8,9 +8,17 @@ import { RepositoriesComponent } from "./components/repositories/repositories.co
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { LoaderComponent } from "./components/loader/loader.component";
+import { SimplebarAngularModule } from "simplebar-angular";
+
 @NgModule({
   declarations: [AppComponent, RepositoriesComponent, LoaderComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    SimplebarAngularModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
