@@ -9,9 +9,11 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { LoaderComponent } from "./components/loader/loader.component";
 import { SimplebarAngularModule } from "simplebar-angular";
+import { HeaderComponent } from './components/header/header.component';
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
-  declarations: [AppComponent, RepositoriesComponent, LoaderComponent],
+  declarations: [AppComponent, RepositoriesComponent, LoaderComponent, HeaderComponent, LogoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
