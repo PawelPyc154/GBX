@@ -1,12 +1,10 @@
 @import "../../../variable.scss";
 .header {
-    max-width: 1242px;
     margin-top: 46px;
     display: flex;
     justify-content: space-between;
     &__title {
         color: $color-blue;
-        margin-left: 21px;
     }
     &__lable {
         display: block;
