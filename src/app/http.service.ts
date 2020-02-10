@@ -17,12 +17,12 @@ export class HttpService {
   constructor(private http: HttpClient) {}
 
   getRepositoriesHttp(userName: string) {
+    
     this.userName = userName;
     this.userNameObs.next(this.userName);
 
     this.error = "";
     this.errorObs.next(this.error);
-
     if (this.userName) {
       this.loading = true;
       this.loadingObs.next(this.loading);

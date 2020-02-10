@@ -28,6 +28,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {}
 
   getRepositoriesHttp() {
-    this._http.getRepositoriesHttp(this.userName);
+
+    if(this.userName){
+    this._http.getRepositoriesHttp(this.userName)
+  }
   }
 }

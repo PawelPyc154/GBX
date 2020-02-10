@@ -26,18 +26,37 @@
     <header class="header">
         <h1 class="header__title">Rekrutacja GBX Soft</h1>
         <label class="header__lable" for="">Wpisz nazwę użytkownika repo
-      <input
-        class="header__input input"
-        type="text"
-        [(ngModel)]="userName"
-        (keyup.enter)="getRepositoriesHttp()"
-        [disabled]="loading"
-      />
+      <div class="header__inputContainer">
+        <input
+          class="header__input input"
+          type="text"
+          [(ngModel)]="userName"
+          (keyup.enter)="getRepositoriesHttp()"
+          [disabled]="loading"
+        />
+        <button
+          type="button"
+          class="header__button"
+          (click)="getRepositoriesHttp()"
+          [disabled]="loading"
+        >
+          <svg
+            width="16"
+            height="16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.707 8.669a1 1 0 000-1.414L9.343.89A1 1 0 007.93 2.305l5.657 5.657-5.657 5.657a1 1 0 101.414 1.414l6.364-6.364zM0 8.962h15v-2H0v2z"
+              fill="#F1F4FF"
+            />
+          </svg>
+        </button>
+      </div>
       <div class="header__error" *ngIf="error === 'Not Found'">
-        Użytkownik nie znaleziony
+        Użytkownik nie znaleziony. Błędna nazwa użytkownika.
       </div>
     </label>
     </header>
-
-    <app-repositories></app-repositories>
 </div>
+<app-repositories></app-repositories>

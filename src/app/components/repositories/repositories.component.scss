@@ -2,9 +2,10 @@
 .repositories {
     box-shadow: 1px 0px 16px rgba(0, 0, 0, 0.17);
     height: 602px;
-    margin-top: 40px;
+    margin: 40px auto 0;
     padding: 34px 0px 40px 38px;
     scroll-padding: 50px 0 50px 0;
+    max-width: 1200px;
     &__container {
         display: flex;
         flex-wrap: wrap;
