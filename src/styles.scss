@@ -51,7 +51,7 @@ img {
 }
 
 .simplebar-scrollbar {
-    background-color: $color-scrollbar-track;
+    background-color: $color-scrollbar-thumb;
     border-radius: 50px;
     width: 4px;
     &::before {
@@ -60,7 +60,7 @@ img {
 }
 
 .simplebar-track {
-    background-color: $color-scrollbar-thumb;
+    background-color: $color-scrollbar-track;
     border-radius: 50px;
     width: 4px !important;
 }

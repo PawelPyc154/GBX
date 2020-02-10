@@ -1,10 +1,10 @@
 <section class="repositories">
-    <div *ngIf="!_http.error && _http.repositories.length === 0">
+    <div *ngIf="!error && repositories?.length === 0">
         Ten użytkownik nie posiada repozytoriów
     </div>
-    <ng-container *ngIf="_http.repositories && !_http.loading">
+    <ng-container *ngIf="repositories && !loading">
         <ngx-simplebar class="repositories__container">
-            <article *ngFor="let repository of _http.repositories" class="repository">
+            <article *ngFor="let repository of repositories" class="repository">
                 <figure class="repository__avatar">
                     <img [src]="repository.owner.avatar_url" alt="" />
                 </figure>
@@ -28,5 +28,5 @@
             </article>
         </ngx-simplebar>
     </ng-container>
-    <app-loader *ngIf="_http.loading"></app-loader>
+    <app-loader *ngIf="loading"></app-loader>
 </section>

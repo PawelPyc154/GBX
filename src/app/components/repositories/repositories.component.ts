@@ -6,7 +6,21 @@ import { HttpService } from "../../http.service";
   styleUrls: ["./repositories.component.scss"]
 })
 export class RepositoriesComponent implements OnInit {
-  constructor(private _http: HttpService) {}
+  repositories: Object[];
+  error: string;
+  loading: boolean;
+
+  constructor(private _http: HttpService) {
+    this._http.getRepositoriesObs().subscribe(repositories => {
+      this.repositories = repositories;
+    });
+    this._http.getErrorObs().subscribe(error => {
+      this.error = error;
+    });
+    this._http.getLoadingObs().subscribe(loading => {
+      this.loading = loading;
+    });
+  }
 
   ngOnInit() {}
 }
