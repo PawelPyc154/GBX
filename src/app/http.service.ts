@@ -6,67 +6,56 @@ import { of, Observable, BehaviorSubject } from "rxjs";
   providedIn: "root"
 })
 export class HttpService {
-  private userName: string = "";
-  private repositories: Object[] | null;
-  private error: string;
-  private loading: boolean = false;
-  private userNameObs = new BehaviorSubject<string>("");
-  private repositoriesObs = new BehaviorSubject<Object[]>(null);
-  private errorObs = new BehaviorSubject<string>("");
-  private loadingObs = new BehaviorSubject<boolean>(false);
+  private userName = new BehaviorSubject<string>("");
+  private repositories = new BehaviorSubject<Object[]>(null);
+  private error = new BehaviorSubject<string>("");
+  private loading = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient) {}
 
   getRepositoriesHttp(userName: string) {
-    
-    this.userName = userName;
-    this.userNameObs.next(this.userName);
-    this.error = "";
-    this.errorObs.next(this.error);
+    this.userName.next(userName);
+    this.error.next("");
     if (this.userName) {
-      this.loading = true;
-      this.loadingObs.next(this.loading);
+      this.loading.next(true);
       return this.http
-        .get(`https://api.github.com/users/${this.userName}/repos`)
+        .get<Array<any>>(
+          `https://api.github.com/users/${this.userName.value}/repos`
+        )
         .subscribe(
           (data: any[]) => {
-            this.repositories = data.sort(
-              (a, b) =>
-                new Date(a.updated_at).getTime() -
-                new Date(b.updated_at).getTime()
+            this.repositories.next(
+              data.sort(
+                (a, b) =>
+                  new Date(a.updated_at).getTime() -
+                  new Date(b.updated_at).getTime()
+              )
             );
-            this.repositoriesObs.next(this.repositories);
-            this.userName = "";
-            this.userNameObs.next(this.userName);
-            this.loading = false;
-            this.loadingObs.next(this.loading);
+            this.userName.next("");
+            this.loading.next(false);
           },
           err => {
-            this.repositories = null;
-            this.repositoriesObs.next(this.repositories);
-            this.error = err.statusText;
-            this.errorObs.next(this.error);
-            this.loading = false;
-            this.loadingObs.next(this.loading);
+            this.repositories.next(null);
+            this.error.next(err.statusText);
+            this.loading.next(false);
           }
         );
     } else {
-      this.repositories = null;
-      this.repositoriesObs.next(this.repositories);
-      this.userName = "";
-      this.userNameObs.next(this.userName);
+      this.repositories.next(null);
+      this.userName.next("");
     }
   }
 
   getUserNameObs(): Observable<string> {
-    return this.userNameObs.asObservable();
+    return this.userName.asObservable();
   }
   getRepositoriesObs(): Observable<Object[]> {
-    return this.repositoriesObs.asObservable();
+    return this.repositories.asObservable();
   }
   getErrorObs(): Observable<string> {
-    return this.errorObs.asObservable();
+    return this.error.asObservable();
   }
   getLoadingObs(): Observable<boolean> {
-    return this.loadingObs.asObservable();
+    return this.loading.asObservable();
   }
 }

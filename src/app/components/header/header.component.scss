@@ -29,7 +29,7 @@
         }
     }
     &__error {
-        color: red;
+        color: $color-error;
     }
     &__inputContainer {
         display: flex;
