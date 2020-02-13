@@ -55,7 +55,7 @@ img {
     border-radius: 50px;
     width: 4px;
     &::before {
-        display: none;
+        // display: none;
     }
 }
 
@@ -63,6 +63,8 @@ img {
     background-color: $color-scrollbar-track;
     border-radius: 50px;
     width: 4px !important;
+    height: 545px;
+    transform: translateY(-8px);
 }
 
 .container {
