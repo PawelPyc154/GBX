@@ -6,15 +6,14 @@ import { of, Observable, BehaviorSubject } from "rxjs";
   providedIn: "root"
 })
 export class HttpService {
-  private userName = new BehaviorSubject<string>("");
-  private repositories = new BehaviorSubject<Object[]>(null);
-  private error = new BehaviorSubject<string>("");
-  private loading = new BehaviorSubject<boolean>(false);
+  public userName = new BehaviorSubject<string>("");
+  public repositories = new BehaviorSubject<Object[]>(null);
+  public error = new BehaviorSubject<string>("");
+  public loading = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {}
 
-  getRepositoriesHttp(userName: string) {
-    this.userName.next(userName);
+  getRepositoriesHttp() {
     this.error.next("");
     if (this.userName) {
       this.loading.next(true);
@@ -44,18 +43,5 @@ export class HttpService {
       this.repositories.next(null);
       this.userName.next("");
     }
-  }
-
-  getUserNameObs(): Observable<string> {
-    return this.userName.asObservable();
-  }
-  getRepositoriesObs(): Observable<Object[]> {
-    return this.repositories.asObservable();
-  }
-  getErrorObs(): Observable<string> {
-    return this.error.asObservable();
-  }
-  getLoadingObs(): Observable<boolean> {
-    return this.loading.asObservable();
   }
 }
