@@ -20,6 +20,8 @@ export class RepositoriesComponent implements OnInit {
     this._http.getLoadingObs().subscribe(loading => {
       this.loading = loading;
     });
+
+    console.log(this._http.getRepositoriesObs());
   }
 
   ngOnInit() {}
