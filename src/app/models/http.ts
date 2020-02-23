@@ -1,6 +1,6 @@
 export interface httpState {
   userName: string;
-  repositories: null | any[];
+  repositories: null | Object[];
   error: string;
   loading: boolean;
 }
