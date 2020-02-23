@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   loading: boolean;
 
   constructor(private _http: HttpService) {
-    this._http.stateObs.subscribe(state => {
+    this._http.getState().subscribe(state => {
       this.userName = state.userName;
       this.error = state.error;
       this.loading = state.loading;
