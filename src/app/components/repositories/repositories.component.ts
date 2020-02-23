@@ -12,6 +12,8 @@ export class RepositoriesComponent implements OnInit {
 
   constructor(private _http: HttpService) {
     this._http.stateObs.subscribe(state => {
+      console.log(state);
+
       this.repositories = state.repositories;
       this.error = state.error;
       this.loading = state.loading;
