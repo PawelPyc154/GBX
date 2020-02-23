@@ -6,38 +6,37 @@ import { of, Observable, BehaviorSubject } from "rxjs";
   providedIn: "root"
 })
 export class HttpService {
-  userName = new BehaviorSubject<string>("");
-  repositories = new BehaviorSubject<Object[]>(null);
-  error = new BehaviorSubject<string>("");
-  loading = new BehaviorSubject<boolean>(false);
+  private state = {
+    userName: "",
+    repositories: null,
+    error: "",
+    loading: false
+  };
+  stateObs: Observable<any> = of(this.state);
 
   constructor(private http: HttpClient) {}
 
   getRepositoriesHttp(userName: string) {
-    this.userName.next(userName);
-    this.error.next("");
+    this.state.userName = userName;
+    this.state.error = "";
     if (userName) {
-      this.loading.next(true);
+      this.state.loading = true;
       return this.http
-        .get<Array<any>>(
-          `https://api.github.com/users/${this.userName.value}/repos`
-        )
+        .get<Array<any>>(`https://api.github.com/users/${userName}/repos`)
         .subscribe(
           (data: any[]) => {
-            this.repositories.next(
-              data.sort(
-                (a, b) =>
-                  new Date(a.updated_at).getTime() -
-                  new Date(b.updated_at).getTime()
-              )
+            this.state.repositories = data.sort(
+              (a, b) =>
+                new Date(a.updated_at).getTime() -
+                new Date(b.updated_at).getTime()
             );
-            this.userName.next("");
-            this.loading.next(false);
+            this.state.userName = "";
+            this.state.loading = false;
           },
           err => {
-            this.repositories.next(null);
-            this.error.next(err.statusText);
-            this.loading.next(false);
+            this.state.repositories = null;
+            this.state.error = err.statusText;
+            this.state.loading = false;
           }
         );
     }

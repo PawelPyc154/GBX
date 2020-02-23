@@ -12,15 +12,10 @@ export class HeaderComponent implements OnInit {
   loading: boolean;
 
   constructor(private _http: HttpService) {
-    this._http.error.subscribe((error: string) => {
-      this.error = error;
-    });
-    this._http.loading.subscribe((loading: boolean) => {
-      this.loading = loading;
-    });
-
-    this._http.userName.subscribe((userName: string) => {
-      this.userName = userName;
+    this._http.stateObs.subscribe(state => {
+      this.userName = state.userName;
+      this.error = state.error;
+      this.loading = state.loading;
     });
   }
 

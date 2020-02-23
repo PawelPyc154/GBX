@@ -11,14 +11,10 @@ export class RepositoriesComponent implements OnInit {
   loading: boolean;
 
   constructor(private _http: HttpService) {
-    this._http.repositories.subscribe(repositories => {
-      this.repositories = repositories;
-    });
-    this._http.error.subscribe(error => {
-      this.error = error;
-    });
-    this._http.loading.subscribe(loading => {
-      this.loading = loading;
+    this._http.stateObs.subscribe(state => {
+      this.repositories = state.repositories;
+      this.error = state.error;
+      this.loading = state.loading;
     });
   }
 
