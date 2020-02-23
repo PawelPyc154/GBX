@@ -6,17 +6,17 @@ import { of, Observable, BehaviorSubject } from "rxjs";
   providedIn: "root"
 })
 export class HttpService {
-  private userName = new BehaviorSubject<string>("");
-  private repositories = new BehaviorSubject<Object[]>(null);
-  private error = new BehaviorSubject<string>("");
-  private loading = new BehaviorSubject<boolean>(false);
+  userName = new BehaviorSubject<string>("");
+  repositories = new BehaviorSubject<Object[]>(null);
+  error = new BehaviorSubject<string>("");
+  loading = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {}
 
   getRepositoriesHttp(userName: string) {
     this.userName.next(userName);
     this.error.next("");
-    if (this.userName) {
+    if (userName) {
       this.loading.next(true);
       return this.http
         .get<Array<any>>(
@@ -40,22 +40,6 @@ export class HttpService {
             this.loading.next(false);
           }
         );
-    } else {
-      this.repositories.next(null);
-      this.userName.next("");
     }
-  }
-
-  getUserNameObs(): Observable<string> {
-    return this.userName.asObservable();
-  }
-  getRepositoriesObs(): Observable<Object[]> {
-    return this.repositories.asObservable();
-  }
-  getErrorObs(): Observable<string> {
-    return this.error.asObservable();
-  }
-  getLoadingObs(): Observable<boolean> {
-    return this.loading.asObservable();
   }
 }

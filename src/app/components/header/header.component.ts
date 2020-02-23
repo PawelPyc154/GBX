@@ -12,14 +12,14 @@ export class HeaderComponent implements OnInit {
   loading: boolean;
 
   constructor(private _http: HttpService) {
-    this._http.getErrorObs().subscribe((error: string) => {
+    this._http.error.subscribe((error: string) => {
       this.error = error;
     });
-    this._http.getLoadingObs().subscribe((loading: boolean) => {
+    this._http.loading.subscribe((loading: boolean) => {
       this.loading = loading;
     });
 
-    this._http.getUserNameObs().subscribe((userName: string) => {
+    this._http.userName.subscribe((userName: string) => {
       this.userName = userName;
     });
   }
@@ -27,8 +27,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {}
 
   getRepositoriesHttp() {
-    if (this.userName) {
-      this._http.getRepositoriesHttp(this.userName);
-    }
+    this._http.getRepositoriesHttp(this.userName);
   }
 }
