@@ -1,6 +1,6 @@
-export interface httpState {
+export interface HttpState {
   userName: string;
-  repositories: null | Object[];
+  repositories: null | any;
   error: string;
   loading: boolean;
 }

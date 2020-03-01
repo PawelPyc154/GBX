@@ -9,18 +9,8 @@
         (keyup.enter)="getRepositoriesHttp()"
         [disabled]="loading"
       />
-      <button
-        type="button"
-        class="header__button"
-        (click)="getRepositoriesHttp()"
-        [disabled]="loading"
-      >
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+      <button type="button" class="header__button" (click)="getRepositoriesHttp()" [disabled]="loading">
+        <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M15.707 8.669a1 1 0 000-1.414L9.343.89A1 1 0 007.93 2.305l5.657 5.657-5.657 5.657a1 1 0 101.414 1.414l6.364-6.364zM0 8.962h15v-2H0v2z"
             fill="#F1F4FF"

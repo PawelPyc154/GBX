@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { HttpService } from "src/app/http.service";
+import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/http.service';
 
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.scss"]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  userName: string = "";
+  userName = '';
   error: string;
   loading: boolean;
 

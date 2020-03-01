@@ -1,4 +1,4 @@
-@import "../../../variable.scss";
+@import '../../../variable.scss';
 .header {
     margin-top: 46px;
     display: flex;
@@ -22,7 +22,7 @@
         border-bottom-left-radius: 10px;
         color: $color-grey;
         font-size: 18px;
-        font-family: "Roboto", sans-serif;
+        font-family: 'Roboto', sans-serif;
         padding-left: 20px;
         &:disabled {
             background-color: $color-light-blue;
